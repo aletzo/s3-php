@@ -12,9 +12,13 @@ foreach ($images as $image) {
     }
 
     s3()->putObject([
-        'Bucket'       => S3_BUCKET,
-        'Key'          => $image,
-	    'SourceFile'   => $path . '/' . $image,
+        'Bucket'     => S3_BUCKET,
+        'Key'        => 'foo/' . $image,
+	    'SourceFile' => $path . '/' . $image,
+	    'Metadata'   => [
+	        'height' => 500,
+	        'width'  => 500,
+	    ]
     ]);
 }
 
